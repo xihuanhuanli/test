@@ -1,0 +1,200 @@
+版本信息
+Microsoft JDBC Driver 6.4 for SQL Server
+2018 年 2 月
+
+------------
+简介
+------------
+此文件包含最新或其他重要信息，是 Microsoft JDBC  
+Driver 6.4 for SQL Server 文档。在安装 JDBC 驱动程序之前，应 
+通读此文件。
+
+你的反馈对我们非常重要，我们将力求即时对你的反馈 
+做出回复。有关使用 JDBC 驱动程序博客和在线论坛提供反馈的信息，
+请参阅 Microsoft JDBC Driver 6.4 for SQL Server 页面，网址为 https://aka.ms/mssql-jdbc
+
+
+------------
+安装
+------------
+install.txt 中提供了有关安装 JDBC 驱动程序的说明。请参阅该文件，了解 
+有关在 Windows、Unix 和 Mac 操作系统上安装 JDBC 驱动程序的详细信息。
+
+
+---------------------------
+支持的操作系统
+---------------------------
+Microsoft JDBC Driver 6.4 for SQL Server 支持的操作系统包括：
+  Windows Server 2008 SP2
+  Windows Server 2008 R2 SP1
+  Windows Server 2012
+  Windows Server 2012 R2
+  Windows Server 2016
+  Windows 8
+  Windows 8.1
+  Windows 10
+  Linux
+  Mac
+
+上面的列表是某些受支持的操作系统的示例。JDBC 驱动程序 
+可在任何支持使用 Java 虚拟机 (JVM) 的操作系统上工作。
+
+但仅对 Linux 和 Mac OS（Ubuntu 17、CentOs 7、Suse 12、
+Mac OS 10.13）的最新操作系统进行了兼容性和支持方面的测试。
+
+
+----------------
+版本内容
+----------------
+Microsoft JDBC Driver 6.4 for SQL Server 可执行 zip 或 tar 文件将解压出以下文件 
+在指定位置（相对于选定的安装目录）解包以下文件：
+
+<安装目录>\sqljdbc_<版本>\<语言>\install.txt
+<安装目录>\sqljdbc_<版本>\<语言>\release.txt
+<安装目录>\sqljdbc_<版本>\<语言>\license.txt
+<安装目录>\sqljdbc_<版本>\<语言>\thirdpartynotices.txt
+<安装目录>\sqljdbc_<版本>\<语言>\mssql-jdbc-6.4.0.jre7.jar
+<安装目录>\sqljdbc_<版本>\<语言>\mssql-jdbc-6.4.0.jre8.jar
+<安装目录>\sqljdbc_<版本>\<语言>\mssql-jdbc-6.4.0.jre9.jar
+<安装目录>\sqljdbc_<版本>\<语言>\auth\x86\sqljdbc_auth.dll
+<安装目录>\sqljdbc_<版本>\<语言>\auth\x64\sqljdbc_auth.dll
+<安装目录>\sqljdbc_<版本>\<语言>\samples\<示例文件...>
+<安装目录>\sqljdbc_<版本>\<语言>\xa\xa_install.sql
+<安装目录>\sqljdbc_<版本>\<语言>\xa\x86\sqljdbc_xa.dll
+<安装目录>\sqljdbc_<版本>\<语言>\xa\x64\sqljdbc_xa.dll
+
+有关每个组件的详细信息，请参阅联机文档 
+Microsoft JDBC Driver for SQL Server 文档：
+https://msdn.microsoft.com/en-us/library/dn197850(v=sql.10).aspx
+
+
+-------------
+文档
+-------------
+此包中包括版本信息、安装说明以及许可条款。
+联机可找到所有其他文档。
+
+请注意，已中止脱机帮助文件。
+
+
+---------
+JAR 文件
+---------
+为支持后向兼容和可能的升级方案，JDBC Driver 6.4 的每个安装包都包含 
+每个安装包中有三个 JAR 类库：
+	mssql-jdbc-6.4.0.jre7.jar
+	mssql-jdbc-6.4.0.jre8.jar
+	mssql-jdbc-6.4.0.jre9.jar.
+
+
+----------------------
+特定于功能的文件
+----------------------
+Azure Active Directory 和集成身份验证（在 Windows 上）组件包含在“auth”目录中。
+
+JDBC 分布式事务组件包含在“xa”目录中。
+
+
+--------------------
+功能依赖关系
+--------------------
+Microsoft JDBC Driver 6.4 for SQL Server 中的一些功能依赖于下列外部库：
+
+1.结合使用“Always Encrypted”与 Azure Key Vault 提供程序
+   依赖库：azure-keyvault(version 1.0.0) 和 adal4j(version 1.4.0)
+   
+2.在 Windows、Linux 和 Mac 操作系统中使用“Azure Active Directory 集成身份验证”
+   依赖库：adal4j(version 1.4.0)
+
+有关在标准 Java 应用程序或 Maven 应用程序中包含这些依赖库的详细信息
+可在此处找到：https://go.microsoft.com/fwlink/?linkid=867575
+
+
+-------
+示例
+-------
+演示 JDBC 驱动程序各种功能的示例应用程序包含在示例
+"sample"目录中。有关每个示例以及如何运行它们的详细信息，请参阅联机 
+文档。
+
+
+-----------
+更改列表
+-----------
+从 6.2.2.1 到 6.4.0.0:的更改：
+- 驱动程序不再通过遍历注册的安全提供程序，从首选提供程序处
+  读取“fipsProvider”连接属性和创建 Keystore 的实例。
+  
+改进：
+- 现在驱动程序使用 JDK 9 虚拟机生成 Jar，并从 JDBC 4.3 API 引入方法。
+- 现在驱动程序支持使用“disableStatementPooling”和
+  “statementPoolingCacheSize”连接属性将“准备语句”元数据缓存在驱动程序中。默认情况下，该功能被禁用。
+- 在表查询、BulkCopy 参数和表值参数中添加了 SQLVariant 数据类型支持。
+- 现在驱动程序支持使用“trustManagerClass”和“trustManagerConstructorArg”连接属性
+  指定自定义 TrustManager。
+- 驱动程序现在支持通过指定一个新的连接属性“sslProtocol”来指定 SSL 协议版本。
+- 驱动程序现在还支持通过使用 Kerberos 在所有支持的操作系统 (Linux/Windows/Mac) 上 
+  启用 Azure Active Directory 集成身份验证。
+- 添加了使用表值参数 (TVP) 时对数据类型 DATETIME 和 SMALLDATETIME 的支持。
+- 添加了 CallableStatement 支持，便于识别带有前导符号“@”(at) 的参数名称。
+
+Bug 修复：
+- 修复了在不存在英语区域设置或存在非英语区域设置的情况下变换字符串时出现的
+  错误转换。
+- 修复了后列问题：当 INSERT 语句包含带参数的子查询时，getParameterCount() 
+  会返回错误的参数计数。
+- 修复了当查询中传递空白字符而非空格时的 getParameterMetaData() 问题。
+- 修复了当参数类型为 uniqueIdentifier 时的 CallableStatement.getString() 问题。
+- 修复了 SQLServerPreparedStatement.getMetaData() 中的语句泄漏问题。
+- 修复了问题：当指定了值 0 时，loginTimeout 使用默认值 15 秒。
+- 修复了 PreparedStatement 异常处理中的问题，触发初始 Batch 异常。
+- 修复了 DatabaseMetaData.getImportedKeys() 问题，为 DELETE_RULE 和 UPDATE_RULE 返回正确值。
+- 修复了 ActivityCorrelator 类引发的 ClassLoader 泄漏。
+- 修复了 SQLServerDataTable 构造导致生成 O(n^2) 对象的问题。
+- 修复了 TimeoutTimer 中的问题：如果基础 ThreadGroup 已破坏，则阻止 IllegalThreadStateException。
+- 修复了当建立 SQL Server 连接时处理“账户锁定异常 18486”时的问题。
+- 修复了 MSDTC 重启后由 xa_recover 导致的故障问题。
+
+
+------------
+已知问题
+------------
+下面是有关 Microsoft JDBC Driver 6.4 for SQL Server 的已知问题：
+
+1) 使用 SQL SERVER 2008 OR 2008 R2 时的参数元数据限制
+
+1.a) PreparedStatement.getParameterMetadata() 在与参数化 MERGE 查询一起使用
+时引发 SQLException。
+
+1.b) 预定义语句的参数元数据不适用于具有子查询/联接的查询。
+
+
+2) 与 SQL AZURE 的连接被断开
+
+连接到 SQL Azure 时，空闲连接在处于不活动状态一定时间后可能被某个 
+网络组件（如防火墙）终止。若要避免通过网络组件断开空闲连接，
+应在加载驱动程序的操作系统上设定以下注册表 
+设置（或其非 Windows 等效项）：
+           
+注册表设置                                                                                                                                       推荐值
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime            30000
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval         1000
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\TcpMaxDataRetransmission  10
+
+
+3) 当结合使用 TVP 和 SQL_VARIANT 时 
+
+3.a) 日期值
+
+当使用 TVP 填充一个表时，且该表包含 sql_variant 列中存储的 datetime/smalldatetime/date 值，
+这时如果在结果集上调用 getDateTime()/getSmallDateTime()/getDate() 则不起作用，并引发以下异常：
+
+	java.lang.String 不能强制转换为 java.sql.Timestamp
+
+解决方法：改为使用 getString() 或 getObject()。
+
+3.b) 对于 NULL 值，结合使用 TVP 与 SQL_VARIANT
+
+如果使用 TVP 填充一个表，并将 NULL 值发送给 sql_variant 列类型，会引发
+异常，因为当前不支持在 TVP 中对列类型 sql_variant 插入 NULL 值。
+
